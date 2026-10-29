@@ -1,5 +1,5 @@
 {% set name = "segyio" %}
-{% set version = "1.9.12" %}
+{% set version = "1.9.15" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://github.com/equinor/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 79f1baa969deb613870c812655544af0c61370ffba3731f7f59836949495dd81
+  sha256: da04bed9bc666c9e569e7f86f23c946850c4926b505ddf96f340449a49596a5d
 
 build:
-  number: 2
-  skip: True  # [win and vc<14]
+  number: 0
+  skip: True  # [py<311]
 
 requirements:
   build:
@@ -24,15 +24,11 @@ requirements:
   host:
     - python
     - pip
-    - setuptools
-    - setuptools_scm
-    - pytest
-    - pytest-runner
+    - scikit-build-core
     - numpy
-    - scikit-build
   run:
     - python
-    - numpy
+    - numpy >=1.10
 
 test:
   imports:
